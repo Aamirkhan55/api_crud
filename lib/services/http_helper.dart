@@ -16,7 +16,8 @@ class HttpHelper {
       // Get Data From Response
       String jsonString = response.body;
       // Convert To List<Map>
-      items = jsonDecode(jsonString);
+      List data = jsonDecode(jsonString);
+      items = data.cast<Map>();
     }
     return items;
   }
@@ -75,16 +76,15 @@ class HttpHelper {
   }
 
 // Delete Item
-
-  Future<bool> deleteItem(String itemId) async {
+Future<bool> deleteItem(String itemId) async {
     bool status = false;
 
     // Delet Item
     http.Response response = await http.delete(
         Uri.parse('https://jsonplaceholder.typicode.com/posts/$itemId'));
-      if (response.statusCode == 200) {
-        status = true;
-      }  
+    if (response.statusCode == 200) {
+      status = true;
+    }
 
     return status;
   }
