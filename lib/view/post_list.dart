@@ -37,7 +37,7 @@ class PostList extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PostDetails(thisItem['id'])));
+                                  builder: (context) => PostDetails(thisItem['id'].toString())));
                         },
                       ),
                     );
